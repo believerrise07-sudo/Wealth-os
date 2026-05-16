@@ -1,0 +1,44 @@
+{
+  "entities": {
+    "UserProfileData": {
+      "title": "User Profile Data",
+      "description": "Full storage object for WealthOS user data",
+      "type": "object",
+      "properties": {
+        "income": { "type": "array" },
+        "expenses": { "type": "array" },
+        "debts": { "type": "array" },
+        "ventures": { "type": "array" },
+        "budgets": { "type": "array" },
+        "assets": { "type": "array" },
+        "invoices": { "type": "array" },
+        "clients": { "type": "array" },
+        "chatHistory": { "type": "array" },
+        "profile": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "email": { "type": "string" },
+            "currency": { "type": "string" },
+            "sym": { "type": "string" },
+            "mode": { "type": "string" },
+            "goal": { "type": "string" },
+            "archetype": { "type": "string" },
+            "taxRate": { "type": "number" },
+            "partnerName": { "type": "string" },
+            "businessName": { "type": "string" },
+            "onboarded": { "type": "boolean" }
+          },
+          "required": ["email", "onboarded"]
+        }
+      },
+      "required": ["profile"]
+    }
+  },
+  "firestore": {
+    "/profiles/{userId}": {
+      "schema": "UserProfileData",
+      "description": "User specific data including financial records and profile"
+    }
+  }
+}
